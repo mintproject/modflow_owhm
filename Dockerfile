@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM base-ubuntu18
 
 WORKDIR /app
 
