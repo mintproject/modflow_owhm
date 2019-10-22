@@ -1,4 +1,4 @@
-FROM base-ubuntu18
+FROM mintproject/base-ubuntu18
 
 WORKDIR /app
 
