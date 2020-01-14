@@ -9,9 +9,12 @@ RUN apt-get update \
         build-essential \
         gfortran
 
-RUN wget https://water.usgs.gov/ogw/modflow/MODFLOW-2005_v1.12.00/MF2005.1_12u.zip \
-    && unzip MF2005.1_12u.zip \
-    && mv MF2005.1_12u mf2005 \
-    && cd mf2005/make \
-    && make \
-    && mv mf2005 /usr/bin/
+RUN wget https://ca.water.usgs.gov/modeling-software/one-water-hydrologic-model/MF_OWHM_v1_0_min.zip \
+        && unzip MF_OWHM_v1_0_min.zip \
+        && rm MF_OWHM_v1_0_min.zip
+
+
+RUN cd MF_OWHM_v1_0 \
+        && sed -i "s/F90=ifort/F90=gfortran/g" makefile  \
+        && sed -i "s/CC=icc/CC=gcc/g" makefile \
+        && make
