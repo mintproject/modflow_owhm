@@ -18,3 +18,6 @@ RUN cd MF_OWHM_v1_0 \
         && sed -i "s/F90=ifort/F90=gfortran/g" makefile  \
         && sed -i "s/CC=icc/CC=gcc/g" makefile \
         && make
+
+RUN cd MF_OWHM_v1_0 \
+        && mv bin/OWHM.nix /usr/bin/
